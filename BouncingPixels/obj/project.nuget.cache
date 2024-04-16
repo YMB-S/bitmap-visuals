@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "eDfpyxAhdj0xGBLvA1GAHGXPyQm4rSvzM7a4m9vRzH9Rx5BTT3JuLaWNE8Z9iE+kt4dtCWYcpfd0kjjUtC86Vw==",
+  "success": true,
+  "projectFilePath": "D:\\Programming\\Projects\\BouncingPixels\\BouncingPixels.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PC\\.nuget\\packages\\fastbitmaplib\\2.1.0\\fastbitmaplib.2.1.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.win32.systemevents\\4.5.0\\microsoft.win32.systemevents.4.5.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\system.drawing.common\\4.5.1\\system.drawing.common.4.5.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
+  ],
+  "logs": []
+}
