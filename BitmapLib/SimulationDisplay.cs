@@ -64,7 +64,7 @@ namespace BitmapLib
                     {
                         if (!IsOutOfBounds(pixel))
                         {
-                            bitmap.SetPixel(pixel.XPosition, pixel.YPosition, pixel.Color);
+                            bitmap.SetPixel(obj.Position[0] + pixel.XPosition, obj.Position[1] + pixel.YPosition, pixel.Color);
                         }
                     }
                 }

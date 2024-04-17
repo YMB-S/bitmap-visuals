@@ -12,23 +12,23 @@ namespace GameOfCubes
     {
         int edgeLength;
 
-        public Cube(int x, int y, int edgeLength, System.Drawing.Color color, Vector2 velocity)
+        public Cube(int[] position, int[] velocity, int edgeLength, System.Drawing.Color color) : base()
         {
-            Position = new System.Numerics.Vector2 (x, y);
+            Position = position;
+            Velocity = velocity;
             this.edgeLength = edgeLength;
             Color = color;
-            Velocity = velocity;
         }
 
         public override List<PixelData> GetPixels()
         {
             List<PixelData> pixels = new();
 
-            for (int i = (int)(Position.X); i < (int)(Position.X + edgeLength); i++)
+            for (int i = Position[0]; i < Position[0] + edgeLength; i++)
             {
-                for (int j = (int)(Position.Y); j < (int)(Position.Y + edgeLength); j++)
+                for (int j = Position[1]; j < Position[1] + edgeLength; j++)
                 {
-                    pixels.Add(new PixelData(i, j, base.Color));
+                    pixels.Add(new PixelData(i, j, Color));
                 }
             }
             return pixels;

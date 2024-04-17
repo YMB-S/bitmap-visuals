@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -33,20 +34,26 @@ namespace GameOfCubes
                 cubes.Add(GetRandom());
             }
 
-            cubes.ForEach(cube => { cube.Update(); });
+            cubes.ForEach(cube => { cube.Update(); Debug.WriteLine(cube); });
         }
 
         private Cube GetRandom()
         {
             return new(
-                x: random.Next(0, SimulationDisplay.DISPLAY_WIDTH),
-                y: random.Next(0, SimulationDisplay.DISPLAY_HEIGHT),
-                random.Next(3, 25),
-                System.Drawing.Color.Aquamarine,
-                new Vector2(
+
+                position: (new[] {
+                    random.Next(0, SimulationDisplay.DISPLAY_WIDTH),
+                    random.Next(0, SimulationDisplay.DISPLAY_HEIGHT)
+                }),
+
+                velocity: (new[] {
                     random.Next(-5, 5),
                     random.Next(-5, 5)
-                )
+                }),
+
+                edgeLength: random.Next(3, 25),
+
+                color: System.Drawing.Color.Aquamarine             
             ); 
         }
     }

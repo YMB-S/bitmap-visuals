@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using System.Drawing;
 using System.Numerics;
+using System.Diagnostics;
 using BitmapLib;
+using System;
 
 
 namespace GameOfCubes
