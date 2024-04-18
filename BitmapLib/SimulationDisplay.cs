@@ -59,8 +59,7 @@ namespace BitmapLib
 
                 foreach (SimulationObject obj in objects)
                 {
-                    List<PixelData> pixels = obj.GetPixels();
-                    foreach (PixelData pixel in pixels)
+                    foreach (PixelData pixel in obj.Pixels)
                     {
                         if (!IsOutOfBounds(pixel))
                         {

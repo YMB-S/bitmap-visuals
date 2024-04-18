@@ -20,21 +20,23 @@ namespace GameOfCubes
             cubes = new List<Cube>();
         }
 
-        public override List<PixelData> GetPixels()
+        protected override List<PixelData> CalculatePixels()
         {
             List<PixelData> pixels = new();
-            cubes.ForEach(cube => { pixels.AddRange(cube.GetPixels()); });
+            cubes.ForEach(cube => { pixels.AddRange(cube.Pixels); });
             return pixels;
         }
 
         public override void Update()
         {
+            Pixels = CalculatePixels();
+
             if(random.Next(30) % 3 == 0)
             {
                 cubes.Add(GetRandom());
             }
 
-            cubes.ForEach(cube => { cube.Update(); Debug.WriteLine(cube); });
+            cubes.ForEach(cube => { cube.Update(); });
         }
 
         private Cube GetRandom()

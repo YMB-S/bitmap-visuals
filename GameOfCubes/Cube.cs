@@ -18,9 +18,11 @@ namespace GameOfCubes
             Velocity = velocity;
             this.edgeLength = edgeLength;
             Color = color;
+
+            Pixels = CalculatePixels();
         }
 
-        public override List<PixelData> GetPixels()
+        protected override List<PixelData> CalculatePixels()
         {
             List<PixelData> pixels = new();
 
