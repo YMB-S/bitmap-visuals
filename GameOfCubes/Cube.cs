@@ -12,7 +12,7 @@ namespace GameOfCubes
     {
         int edgeLength;
 
-        public Cube(int[] position, int[] velocity, int edgeLength, System.Drawing.Color color) : base()
+        public Cube(IntVector2 position, IntVector2 velocity, int edgeLength, System.Drawing.Color color) : base()
         {
             Position = position;
             Velocity = velocity;

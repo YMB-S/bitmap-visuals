@@ -10,9 +10,9 @@ namespace BitmapLib
 {
     public abstract class SimulationObject
     {
-        public int[] Position { get; set; }
+        public IntVector2 Position { get; set; }
 
-        public int[] Velocity { get; set; }
+        public IntVector2 Velocity { get; set; }
 
         public List<PixelData> Pixels { get; protected set; }
         protected virtual List<PixelData>? CalculatePixels() { return null; }
@@ -21,14 +21,13 @@ namespace BitmapLib
 
         public virtual void Update()
         {
-            Position[0] += Velocity[0];
-            Position[1] += Velocity[1];
+            Position += Velocity;
         }
 
         public SimulationObject()
         {
-            Position = new int[] { 0, 0 };
-            Velocity = new int[] { 0, 0 };
+            Position = new IntVector2(0, 0);
+            Velocity = new IntVector2(0, 0);
         }
     }
 }

@@ -62,8 +62,8 @@ namespace BitmapLib
                     if (obj.Pixels == null) { continue; } // Some service/manager type objects don't have Pixels
                     foreach (PixelData pixel in obj.Pixels)
                     {
-                        int xCoordinate = obj.Position[0] + pixel.XPosition;
-                        int yCoordinate = obj.Position[1] + pixel.YPosition;
+                        int xCoordinate = obj.Position.X + pixel.XPosition;
+                        int yCoordinate = obj.Position.Y + pixel.YPosition;
 
                         if (!IsOutOfBounds(xCoordinate, yCoordinate))
                         {

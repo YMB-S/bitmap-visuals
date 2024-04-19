@@ -26,8 +26,8 @@ namespace GameOfCubes
             cubes = new()
             {
                 new Cube(
-                    new int[] { 250, 250 },
-                    new int[] { 0, 0 },
+                    new IntVector2(250, 250),
+                    new IntVector2(0, 0),
                     CUBE_EDGE_LENGTH,
                     colors.First()
                     )
@@ -39,8 +39,8 @@ namespace GameOfCubes
         public void ReceiveClick(IntVector2 mousePosition, System.Windows.Input.MouseEventArgs e)
         {
             cubes.Add(new(
-                new int[] {mousePosition.X, mousePosition.Y},
-                new int[] { 0, 0 },
+                new IntVector2 (mousePosition.X, mousePosition.Y),
+                new IntVector2 (0, 0),
                 CUBE_EDGE_LENGTH,
                 colors.First()
                 ));
@@ -50,10 +50,10 @@ namespace GameOfCubes
         {
             base.Update();
             var lastCube = cubes.ElementAt(cubes.Count - 1);
-            int[] newPosition = GetNewCubePositionFrom(lastCube);
+            IntVector2 newPosition = GetNewCubePositionFrom(lastCube);
 
             int attempts = 0;   // Try picking a new position that isn't occupied yet
-            while (cubes.Exists(x => x.Position[0] == newPosition[0] && x.Position[1] == newPosition[1]))
+            while (cubes.Exists(x => x.Position.X == newPosition.X && x.Position.Y == newPosition.Y))
             {
                 newPosition = GetNewCubePositionFrom(lastCube);
                 attempts++;
@@ -65,8 +65,8 @@ namespace GameOfCubes
 
             int colorIndex = (colors.IndexOf(lastCube.Color) + 1) % colors.Count;
 
-            Cube newCube = new Cube(new int[] { newPosition[0], newPosition[1] },
-                new int[] { 0, 0 },
+            Cube newCube = new Cube(new IntVector2(newPosition.X, newPosition.Y),
+                new IntVector2(0, 0),
                 CUBE_EDGE_LENGTH,
                 colors.ElementAt(colorIndex)
             );
@@ -77,7 +77,7 @@ namespace GameOfCubes
             SimulationManager.AddToSimulation(newCube);
         }
 
-        private int[] GetNewCubePositionFrom(Cube lastCube)
+        private IntVector2 GetNewCubePositionFrom(Cube lastCube)
         {
             int xDirection = 1;
             if (random.Next(2) == 1) { xDirection = -1; }
@@ -86,13 +86,13 @@ namespace GameOfCubes
             if (random.Next(2) == 1) { xDirection = 0; }
             if (random.Next(2) == 1) { yDirection = 0; }
 
-            int xPosition = lastCube.Position[0];
+            int xPosition = lastCube.Position.X;
             xPosition += (CUBE_EDGE_LENGTH) * xDirection;
 
-            int yPosition = lastCube.Position[1];
+            int yPosition = lastCube.Position.Y;
             yPosition += (CUBE_EDGE_LENGTH) * yDirection;
 
-            return new int[] {xPosition, yPosition };
+            return new IntVector2(xPosition, yPosition);
         }
     }
 }

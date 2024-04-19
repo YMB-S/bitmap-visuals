@@ -11,6 +11,7 @@ namespace BitmapLib
     {
         private static SimulationManager instance;
         private List<SimulationObject> objectsToAdd;
+        private List<SimulationObject> objectsToRemove;
         public static SimulationManager GetInstance()
         {
             if (instance == null)
@@ -27,23 +28,36 @@ namespace BitmapLib
         {
             simulationObjects = new();
             objectsToAdd = new();
+            objectsToRemove = new();
         }
 
         public void Update()
         {
             simulationObjects.ForEach(obj => { obj.Update(); });
-            AddInstantiatedObjects();
+            AddQueuedObjects();
+            RemoveQueuedObjects();
         }
 
-        private void AddInstantiatedObjects()
+        private void AddQueuedObjects()
         {
             simulationObjects.AddRange(objectsToAdd);
             objectsToAdd.Clear();
         }
 
+        private void RemoveQueuedObjects()
+        {
+            simulationObjects.RemoveAll(x => objectsToRemove.Contains(x));
+            objectsToRemove.Clear();
+        }
+
         public static void AddToSimulation(SimulationObject obj)
         {
             GetInstance().objectsToAdd.Add(obj);
+        }
+
+        public static void RemoveFromSimulation(SimulationObject obj)
+        {
+            GetInstance().objectsToRemove.Add(obj);
         }
     }
 }

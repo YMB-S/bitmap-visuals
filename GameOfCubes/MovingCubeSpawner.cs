@@ -31,17 +31,16 @@ namespace GameOfCubes
 
         private Cube GetRandomCube()
         {
-            return new(
-
-                position: (new[] {
+            return new (
+                position: new IntVector2(
                     random.Next(0, SimulationDisplay.DISPLAY_WIDTH),
                     random.Next(0, SimulationDisplay.DISPLAY_HEIGHT)
-                }),
+                ),
 
-                velocity: (new[] {
+                velocity: new IntVector2(
                     random.Next(-5, 5),
                     random.Next(-5, 5)
-                }),
+                ),
 
                 edgeLength: random.Next(3, 25),
 
