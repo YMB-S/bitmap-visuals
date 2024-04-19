@@ -16,17 +16,12 @@ namespace GameOfCubes
         List<Color> colors;
 
         private readonly int CUBE_EDGE_LENGTH = 1;
+        private readonly int AMOUNT_COLORS_TO_GENERATE = 1000;
 
         public CrawlingCubeSpawner()
         {
             random = new Random();
-
-            colors = new();
-            KnownColor[] knownColors = (KnownColor[])Enum.GetValues(typeof(KnownColor));
-            foreach (KnownColor c in knownColors)
-            {
-                colors.Add(Color.FromKnownColor(c));
-            }
+            colors = ColorUtils.GetRainbowColors(AMOUNT_COLORS_TO_GENERATE);
 
             cubes = new()
             {
@@ -41,9 +36,14 @@ namespace GameOfCubes
             InputManager.GetInstance().AddClickEventReceiver(this);
         }
 
-        public void Receive(System.Windows.Input.MouseEventArgs e)
+        public void ReceiveClick(IntVector2 mousePosition, System.Windows.Input.MouseEventArgs e)
         {
-            e.GetPosition()
+            cubes.Add(new(
+                new int[] {mousePosition.X, mousePosition.Y},
+                new int[] { 0, 0 },
+                CUBE_EDGE_LENGTH,
+                colors.First()
+                ));
         }
 
         public override void Update()

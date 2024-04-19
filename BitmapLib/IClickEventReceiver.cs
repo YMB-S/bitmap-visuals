@@ -9,6 +9,6 @@ namespace BitmapLib
 {
     public interface IClickEventReceiver
     {
-        public void Receive(Vector2 clickPosition, MouseEventArgs e);
+        public void ReceiveClick(IntVector2 clickPosition, MouseEventArgs e);
     }
 }

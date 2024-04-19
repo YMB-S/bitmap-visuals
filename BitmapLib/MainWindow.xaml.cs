@@ -48,7 +48,9 @@ namespace BitmapLib
 
         private void ImageDisplay_OnClick(object sender, MouseEventArgs e)
         {
-            InputManager.GetInstance().NotifyClickReceiversOf(e);
+            var mousePositionInImageDisplay = e.GetPosition(ImageDisplay);
+            IntVector2 clickPosition = new((int)mousePositionInImageDisplay.X, (int)mousePositionInImageDisplay.Y);
+            InputManager.GetInstance().NotifyClickReceivers(clickPosition, e);
         }
 
         public void Resize(int UserInterfaceMargin, int DISPLAY_WIDTH, int DISPLAY_HEIGHT)

@@ -32,9 +32,9 @@ namespace BitmapLib
             clickReceivers.Add(clickReceiver);
         }
 
-        public void NotifyClickReceiversOf(MouseEventArgs e)
+        public void NotifyClickReceivers(IntVector2 mousePosition, MouseEventArgs e)
         {
-            clickReceivers.ForEach(x => { x.Receive(e); });
+            clickReceivers.ForEach(x => { x.ReceiveClick(mousePosition, e); });
         }
     }
 }
