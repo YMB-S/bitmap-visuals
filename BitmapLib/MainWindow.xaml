@@ -8,7 +8,7 @@
         Title="SimulationWindow" Height="450" Width="800">
     <Grid>
 
-        <Image x:Name="ImageDisplay" HorizontalAlignment="Left" Height="450" Margin="100,0,0,0" VerticalAlignment="Top" Width="700"/>
+        <Image x:Name="ImageDisplay" HorizontalAlignment="Left" Height="450" Margin="100,0,0,0" VerticalAlignment="Top" Width="700" MouseLeftButtonDown="ImageDisplay_OnClick"/>
 
     </Grid>
 </Window>

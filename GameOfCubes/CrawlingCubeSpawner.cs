@@ -9,7 +9,7 @@ using BitmapLib;
 
 namespace GameOfCubes
 {
-    internal class CrawlingCubeSpawner : SimulationObject
+    internal class CrawlingCubeSpawner : SimulationObject, IClickEventReceiver
     {
         List<Cube> cubes;
         Random random;
@@ -37,6 +37,13 @@ namespace GameOfCubes
                     colors.First()
                     )
             };
+
+            InputManager.GetInstance().AddClickEventReceiver(this);
+        }
+
+        public void Receive(System.Windows.Input.MouseEventArgs e)
+        {
+            e.GetPosition()
         }
 
         public override void Update()
@@ -64,7 +71,7 @@ namespace GameOfCubes
                 colors.ElementAt(colorIndex)
             );
 
-            Debug.WriteLine("newCube position: " + newCube.Position[0].ToString() + " " + newCube.Position[1].ToString());
+            //Debug.WriteLine("newCube position: " + newCube.Position[0].ToString() + " " + newCube.Position[1].ToString());
 
             cubes.Add(newCube);
             SimulationManager.AddToSimulation(newCube);

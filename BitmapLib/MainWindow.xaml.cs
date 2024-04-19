@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace BitmapLib
@@ -42,6 +44,11 @@ namespace BitmapLib
 
             var image = display.GetImageFrom(manager.SimulationObjects);
             ImageDisplay.Source = image;
+        }
+
+        private void ImageDisplay_OnClick(object sender, MouseEventArgs e)
+        {
+            InputManager.GetInstance().NotifyClickReceiversOf(e);
         }
 
         public void Resize(int UserInterfaceMargin, int DISPLAY_WIDTH, int DISPLAY_HEIGHT)
