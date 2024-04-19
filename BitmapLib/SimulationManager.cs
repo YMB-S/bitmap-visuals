@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace BitmapLib
     public class SimulationManager
     {
         private static SimulationManager instance;
+        private List<SimulationObject> objectsToAdd;
         public static SimulationManager GetInstance()
         {
             if (instance == null)
@@ -24,16 +26,24 @@ namespace BitmapLib
         public SimulationManager()
         {
             simulationObjects = new();
+            objectsToAdd = new();
         }
 
         public void Update()
         {
             simulationObjects.ForEach(obj => { obj.Update(); });
+            AddInstantiatedObjects();
         }
 
-        public void AddObject(SimulationObject toAdd)
+        private void AddInstantiatedObjects()
         {
-            simulationObjects.Add(toAdd);
+            simulationObjects.AddRange(objectsToAdd);
+            objectsToAdd.Clear();
+        }
+
+        public static void AddToSimulation(SimulationObject obj)
+        {
+            GetInstance().objectsToAdd.Add(obj);
         }
     }
 }

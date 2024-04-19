@@ -26,9 +26,9 @@ namespace GameOfCubes
         {
             List<PixelData> pixels = new();
 
-            for (int i = Position[0]; i < Position[0] + edgeLength; i++)
+            for (int i = 0; i < edgeLength; i++)
             {
-                for (int j = Position[1]; j < Position[1] + edgeLength; j++)
+                for (int j = 0; j < edgeLength; j++)
                 {
                     pixels.Add(new PixelData(i, j, Color));
                 }

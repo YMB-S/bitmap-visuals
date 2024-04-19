@@ -59,22 +59,26 @@ namespace BitmapLib
 
                 foreach (SimulationObject obj in objects)
                 {
+                    if (obj.Pixels == null) { continue; } // Some service/manager type objects don't have Pixels
                     foreach (PixelData pixel in obj.Pixels)
                     {
-                        if (!IsOutOfBounds(pixel))
+                        int xCoordinate = obj.Position[0] + pixel.XPosition;
+                        int yCoordinate = obj.Position[1] + pixel.YPosition;
+
+                        if (!IsOutOfBounds(xCoordinate, yCoordinate))
                         {
-                            bitmap.SetPixel(obj.Position[0] + pixel.XPosition, obj.Position[1] + pixel.YPosition, pixel.Color);
+                            bitmap.SetPixel(xCoordinate, yCoordinate, pixel.Color);
                         }
                     }
                 }
             }
         }
 
-        private bool IsOutOfBounds(PixelData pixel)
+        private bool IsOutOfBounds(int xCoordinate, int yCoordinate)
         {
             return (
-                pixel.XPosition < 0 || pixel.YPosition < 0 ||
-                pixel.XPosition >= bitmap.Width || pixel.YPosition >= bitmap.Height
+                xCoordinate < 0 || yCoordinate < 0 ||
+                xCoordinate >= bitmap.Width || yCoordinate >= bitmap.Height
             );   
         }
 

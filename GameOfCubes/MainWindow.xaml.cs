@@ -17,8 +17,7 @@ namespace GameOfCubes
         {
             InitializeComponent();
 
-            SimulationManager.GetInstance().AddObject(new CubeManager());
-
+            SimulationManager.AddToSimulation(new CrawlingCubeSpawner());
             BitmapLib.MainWindow window = BitmapLib.MainWindow.Start(this);
             window.Resize(100, 500, 500);
         }

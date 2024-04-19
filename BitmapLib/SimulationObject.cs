@@ -15,7 +15,7 @@ namespace BitmapLib
         public int[] Velocity { get; set; }
 
         public List<PixelData> Pixels { get; protected set; }
-        protected abstract List<PixelData> CalculatePixels();
+        protected virtual List<PixelData>? CalculatePixels() { return null; }
 
         public Color Color { get; set; }
 

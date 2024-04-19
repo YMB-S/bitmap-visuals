@@ -9,37 +9,27 @@ using BitmapLib;
 
 namespace GameOfCubes
 {
-    public class CubeManager : SimulationObject
+    public class MovingCubeSpawner : SimulationObject
     {
         Random random;
-        List<Cube> cubes;
+        //List<Cube> cubes;
 
-        public CubeManager() 
+        public MovingCubeSpawner() 
         {
             random = new Random();
-            cubes = new List<Cube>();
-        }
-
-        protected override List<PixelData> CalculatePixels()
-        {
-            List<PixelData> pixels = new();
-            cubes.ForEach(cube => { pixels.AddRange(cube.Pixels); });
-            return pixels;
+            //cubes = new List<Cube>();
         }
 
         public override void Update()
         {
-            Pixels = CalculatePixels();
-
             if(random.Next(30) % 3 == 0)
             {
-                cubes.Add(GetRandom());
+                //cubes.Add(GetRandom());
+                SimulationManager.AddToSimulation(GetRandomCube());
             }
-
-            cubes.ForEach(cube => { cube.Update(); });
         }
 
-        private Cube GetRandom()
+        private Cube GetRandomCube()
         {
             return new(
 
